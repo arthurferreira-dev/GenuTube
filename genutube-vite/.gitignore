@@ -4,6 +4,15 @@
 # NodeJS
 node_modules/*
 
+# Secret
+*.env
+
+# Sass
+*.css.map
+
+# Testing Features
+src/test/*
+
 # Logs
 logs
 *.log

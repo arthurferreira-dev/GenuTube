@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": "747fa609-f980-4b02-beef-83271a81d1cb",
+      "content": {
+        "title": "FIM DO DEV SAMURAI E CURSOS GRATUITOS!!!",
+        "channelName": "Dicas de Dev",
+        "channelId": "@dicas_de_dev",
+        "thumbnail": {
+          "high": {
+            "url": "https://i.ytimg.com/vi/TdmX1hOPZL4/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAa1daN7yo3vDd9kMJnzo_Z7Q8nfw"
+          }
+        },
+        "video": {
+            "url": "https://h.uguu.se/dLUXKbjF.mp4"
+        }
+      }
+    }
+  ]
+}
