@@ -25,7 +25,7 @@ export function HeaderHome() {
       <div className="flex justify-center items-center gap-2 bg-white font-mono w-[250px] max-[676px]:w-[165px] rounded-full">
         <label
           htmlFor="search-input"
-          className="rounded-full p-1 duration-300 hover:bg-slate-200 hover:cursor-pointer"
+          className="rounded-full p-2 duration-300 hover:bg-slate-200 hover:cursor-pointer"
         >
           <Search size={22} />
         </label>
@@ -34,7 +34,7 @@ export function HeaderHome() {
           type="text"
           value={inputVal}
           onChange={(e) => setInputVal(e.target.value)}
-          className="px-3 py-2 focus:outline-none focus:ring-0 border-l-black border-l-2"
+          className="w-full px-3 py-2 focus:outline-none focus:ring-0 border-l-black border-l-2"
         />
       </div>
     );

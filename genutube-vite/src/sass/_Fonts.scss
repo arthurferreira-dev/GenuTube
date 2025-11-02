@@ -7,7 +7,7 @@ $fonts: (
 
 @mixin Fonts {
   @each $name, $font in $fonts {
-    .font-#{$name} {
+    .font-\[#{$name}\] {
       font-family: $font;
     }
   }
