@@ -42,14 +42,18 @@ export function HeaderHome() {
 
   return (
     <header className="p-3 flex justify-between items-center bg-slate-500">
-      <img
-        src={GenuTubeIcon}
-        alt="Genutube-Icon"
-        className="rounded-md"
-        width={wdtImg}
-      />
+      <a href="/">
+        <img
+          src={GenuTubeIcon}
+          alt="Genutube-Icon"
+          className="rounded-md"
+          width={wdtImg}
+        />
+      </a>
       <InputSearch />
-      <p>Account (remeber PLS!)</p>
+      <button className="p-2 bg-sky-500 text-white font-[rubik] w-[125px] rounded-lg duration-300 hover:bg-sky-600 hover:cursor-pointer">
+        Logar
+      </button>
     </header>
   );
 }

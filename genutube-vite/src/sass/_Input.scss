@@ -1,0 +1,26 @@
+@mixin ConfigInput {
+  $ball-size: 15.1px;
+  $bg-color: oklch(92.9% 0.013 255.508);
+  background-color: $bg-color;
+  width: $ball-size;
+  height: $ball-size;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@mixin InputPrefence {
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      @include ConfigInput();
+    }
+
+    &::-moz-range-thumb {
+      @include ConfigInput();
+    }
+  }
+}

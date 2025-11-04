@@ -4,7 +4,7 @@ export const FooterCopyRight = () => {
   const name: string = "arthur ferreira da costa";
 
   return (
-    <footer className="bg-slate-500 p-2 text-white text-center font-rubik font-medium">
+    <footer className="bg-slate-500 p-2 text-white text-center font-[open_sans] font-medium">
       &copy; Direitos Reservados de <span className="capitalize">{name}</span> - ({year})
     </footer>
   );

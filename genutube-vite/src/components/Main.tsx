@@ -20,7 +20,7 @@ export function MainHome() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const PopularVideos = async () => {
+    const VideosGenu = async () => {
       try {
         const result = await fetch("/videos.json");
         const json = await result.json();
@@ -35,7 +35,7 @@ export function MainHome() {
       }
     };
 
-    PopularVideos();
+    VideosGenu();
   }, []);
 
   if (error) {
@@ -48,16 +48,16 @@ export function MainHome() {
 
   const handleWatchVideo = (video: VideosItens) => {
     const query: URLSearchParams = new URLSearchParams();
-    query.set('title', video.content.title);
-    query.set('channel', video.content.channelName);
-    query.set('channelId', video.content.channelId);
-    query.set('thumb', video.content.thumbnail.high.url);
-    query.set('video', video.content.video.url);
-    navigate(`/watch?${query.toString()}`)
+    query.set("video", video.content.video.url);
+    query.set("thumb", video.content.thumbnail.high.url);
+    query.set("title", video.content.title);
+    //query.set("channel", video.content.channelName);
+    query.set("channelId", video.content.channelId);
+    navigate(`/watch?${query.toString()}`);
   };
 
   return (
-    <main className="w-full min-h-screen bg-slate-600 p-2">
+    <main className="w-full min-h-screen bg-slate-600 p-2 font-[poppins]">
       <div className="flex flex-row flex-wrap gap-5 text-white">
         {videos.map((video) => (
           <div
