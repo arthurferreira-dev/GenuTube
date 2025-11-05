@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   Play,
   Pause,
@@ -14,7 +14,7 @@ export const VideoPlayer = () => {
   const [searchParams] = useSearchParams();
   const titleVideo = searchParams.get("title");
   const channelName = searchParams.get("channel");
-  //const channelId = searchParams.get("channelId");
+  const channelId = searchParams.get("channelId");
   const thumbnail = searchParams.get("thumb");
   const videoWatch = searchParams.get("video");
 
@@ -27,6 +27,8 @@ export const VideoPlayer = () => {
   const [sound, setSound] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [screen, setScreen] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (videoRef.current) videoRef.current.volume = volume;
@@ -53,13 +55,13 @@ export const VideoPlayer = () => {
 
   useEffect(() => {
     const fullScreenEvent = () => {
-      setScreen(!document.fullscreenElement)
-    }
-    document.addEventListener('fullscreenchange', fullScreenEvent);
+      setScreen(!document.fullscreenElement);
+    };
+    document.addEventListener("fullscreenchange", fullScreenEvent);
 
     return () => {
-      document.removeEventListener('fullscreenchange', fullScreenEvent);
-    }
+      document.removeEventListener("fullscreenchange", fullScreenEvent);
+    };
   }, []);
 
   const handleToogleBtn = () => {
@@ -92,13 +94,22 @@ export const VideoPlayer = () => {
     }
   };
 
+  const handlePageChannel = () => {
+    const query = new URLSearchParams();
+    query.set('channelId', channelId ?? "");
+    navigate(`/channel?${query.toString()}`)
+  }
+
   return (
     <main className="w-full h-screen font-[rubik] flex flex-col items-center justify-start bg-slate-600 p-3 text-white">
       <div
         id="video-screen"
         className="bg-slate-500 flex flex-col flex-wrap gap-3 p-3 rounded-md"
       >
-        <div ref={containerDiv} className="relative w-[665px] max-[565px]:w-[456px] max-[645px]:w-[502px] max-[700px]:w-[552px] overflow-hidden rounded-[10px]">
+        <div
+          ref={containerDiv}
+          className="relative w-[665px] max-[565px]:w-[456px] max-[645px]:w-[502px] max-[700px]:w-[552px] overflow-hidden rounded-[10px]"
+        >
           <video
             ref={videoRef}
             poster={thumbnail ?? ""}
@@ -142,17 +153,17 @@ export const VideoPlayer = () => {
             className="absolute bottom-2 right-2 bg-black/50 p-2 rounded-full hover:bg-black/70 transition hover:cursor-pointer"
             onClick={handleScreenEvent}
           >
-            {screen ? (
-              <Minimize size={20} className="text-white" />
-            ) : (
+            {screen ? 
               <Expand size={20} className="text-white" />
-            )}
+             : 
+              <Minimize size={20} className="text-white" />
+            }
           </div>
         </div>
         <h2 className="text-center text-[18px]">{titleVideo}</h2>
-        <h4 className="text-lg text-center hover:underline hover:cursor-pointer">
+        <a className="text-lg text-center hover:underline hover:cursor-pointer" onClick={handlePageChannel}>
           {channelName}
-        </h4>
+        </a>
       </div>
     </main>
   );

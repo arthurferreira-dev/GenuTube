@@ -51,7 +51,7 @@ export function MainHome() {
     query.set("video", video.content.video.url);
     query.set("thumb", video.content.thumbnail.high.url);
     query.set("title", video.content.title);
-    //query.set("channel", video.content.channelName);
+    query.set("channel", video.content.channelName);
     query.set("channelId", video.content.channelId);
     navigate(`/watch?${query.toString()}`);
   };

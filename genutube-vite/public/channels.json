@@ -1,0 +1,16 @@
+[
+  {
+    "channelName": "Dicas de Dev",
+    "channelId": "@dicas_de_dev",
+    "photo": {
+      "url": "https://i.postimg.cc/FRBDbbj3/dicas-de-dev-profile.jpg"
+    }
+  },
+  {
+    "channelName": "André Games",
+    "channelId": "@AndreGames2025",
+    "photo": {
+      "url": "https://i.postimg.cc/cLWy8Z1q/andregames2025-profile.jpg"
+    }
+  }
+]
