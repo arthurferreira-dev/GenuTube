@@ -3,10 +3,14 @@ import GenuTubeIcon from "../assets/GenuTube-icon.png";
 import { Search } from "lucide-react";
 import { type JSX } from "react";
 import { useSearchStore } from "../store/useSearchStore";
+import { useNavigate } from "react-router-dom";
+import { useUserStore } from "../store/useUserStore";
 
 export function HeaderHome() {
   const [wdtImg, setWdtImg] = useState<number>(70);
-  const { searchTerm, setSearchTerm } = useSearchStore()
+  const { searchTerm, setSearchTerm } = useSearchStore();
+  const { user } = useUserStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const ResponsiveImg = () => {
@@ -20,6 +24,14 @@ export function HeaderHome() {
       window.removeEventListener("resize", ResponsiveImg);
     };
   }, []);
+
+  const BtnOrUser = () => {
+    if (user === null) {
+      return <button className="p-2 bg-sky-500 text-white font-[rubik] w-[125px] rounded-lg duration-300 hover:bg-sky-600 hover:cursor-pointer"onClick={() => navigate('/login')}>Login</button>
+    } else {
+      return <img className="w-15 rounded-full hover:cursor-pointer" src={user.photo} alt={`${user.email} [Avatar]`} />
+    }
+  }
 
   const InputSearch: () => JSX.Element = () => {
     return (
@@ -52,9 +64,7 @@ export function HeaderHome() {
         />
       </a>
       <InputSearch />
-      <button className="p-2 bg-sky-500 text-white font-[rubik] w-[125px] rounded-lg duration-300 hover:bg-sky-600 hover:cursor-pointer">
-        Logar
-      </button>
+      <BtnOrUser/>
     </header>
   );
 }
