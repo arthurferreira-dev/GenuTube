@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import GenuTubeIcon from "../assets/GenuTube-icon.png";
 import { Search } from "lucide-react";
 import { type JSX } from "react";
+import { useSearchStore } from "../store/useSearchStore";
 
 export function HeaderHome() {
   const [wdtImg, setWdtImg] = useState<number>(70);
-  const [inputVal, setInputVal] = useState<string>("");
+  const { searchTerm, setSearchTerm } = useSearchStore()
 
   useEffect(() => {
     const ResponsiveImg = () => {
@@ -32,8 +33,8 @@ export function HeaderHome() {
         <input
           id="search-input"
           type="text"
-          value={inputVal}
-          onChange={(e) => setInputVal(e.target.value)}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full px-3 py-2 focus:outline-none focus:ring-0 border-l-black border-l-2"
         />
       </div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSearchStore } from "../store/useSearchStore";
 
 interface VideosItens {
   id: string;
@@ -17,6 +18,7 @@ interface VideosItens {
 export function MainHome() {
   const [videos, setVideos] = useState<VideosItens[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const { searchTerm } = useSearchStore()
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,26 +58,42 @@ export function MainHome() {
     navigate(`/watch?${query.toString()}`);
   };
 
+  const filtredVideos = videos.filter((video) => {
+  if (!searchTerm.trim()) return true;
+  return video.content.title
+    .toLowerCase()
+    .includes(searchTerm.toLowerCase().trim());
+});
+
   return (
     <main className="w-full min-h-screen bg-slate-600 p-2 font-[poppins]">
       <div className="flex flex-row flex-wrap gap-5 text-white">
-        {videos.map((video) => (
-          <div
-            key={video.id}
-            className="min-w-[300px] flex-1 bg-slate-500 p-2 rounded-[10px] duration-300 flex flex-col flex-wrap gap-2 w-[400px] max-[627px]:w-full hover:bg-[hsl(216,19%,51%)]"
-            onClick={() => handleWatchVideo(video)}
-          >
-            <img
-              src={video.content.thumbnail.high.url}
-              alt={`${video.id}-${video.content.channelId}`}
-              loading="lazy"
-              className="w-[465px] mx-auto rounded-[10px] max-[627px]:w-full hover:cursor-pointer"
-            />
-            <h3 className="text-[16.45px] font-medium max-[627px]:text-[15.5px] text-center hover:underline hover:cursor-pointer">
-              {video.content.title}
-            </h3>
-          </div>
-        ))}
+        {filtredVideos.length > 0 ? (
+          filtredVideos.map((video) => (
+            <div
+              key={video.id}
+              className="min-w-[300px] flex-1 bg-slate-500 p-2 rounded-[10px] duration-300 flex flex-col flex-wrap gap-2 w-[400px] max-[627px]:w-full hover:bg-[hsl(216,19%,51%)]"
+              onClick={() => handleWatchVideo(video)}
+            >
+              <img
+                src={video.content.thumbnail.high.url}
+                alt={`${video.id}-${video.content.channelId}`}
+                loading="lazy"
+                className="w-[465px] mx-auto rounded-[10px] max-[627px]:w-full hover:cursor-pointer"
+              />
+              <h3 className="text-[16.45px] font-medium max-[627px]:text-[15.5px] text-center hover:underline hover:cursor-pointer">
+                {video.content.title}
+              </h3>
+              <p className="text-sm text-center opacity-75">
+                {video.content.channelName}
+              </p>
+            </div>
+          ))
+        ) : (
+          <p className="text-center w-full text-lg mt-10">
+            Nenhum vídeo encontrado 😢
+          </p>
+        )}
       </div>
     </main>
   );
