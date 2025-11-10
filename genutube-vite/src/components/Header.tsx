@@ -14,9 +14,7 @@ export function HeaderHome() {
 
   useEffect(() => {
     const ResponsiveImg = () => {
-      if (window.innerWidth < 676) {
-        setWdtImg(55);
-      } else setWdtImg(70);
+      setWdtImg(window.innerWidth < 676 ? 55 : 70);
     };
     window.addEventListener("resize", ResponsiveImg);
 
@@ -24,14 +22,6 @@ export function HeaderHome() {
       window.removeEventListener("resize", ResponsiveImg);
     };
   }, []);
-
-  const BtnOrUser = () => {
-    if (user === null) {
-      return <button className="p-2 bg-sky-500 text-white font-[rubik] w-[125px] rounded-lg duration-300 hover:bg-sky-600 hover:cursor-pointer"onClick={() => navigate('/login')}>Login</button>
-    } else {
-      return <img className="w-15 rounded-full hover:cursor-pointer" src={user.photo} alt={`${user.email} [Avatar]`} />
-    }
-  }
 
   const InputSearch: () => JSX.Element = () => {
     return (
@@ -48,10 +38,18 @@ export function HeaderHome() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full px-3 py-2 focus:outline-none focus:ring-0 border-l-black border-l-2"
-        />
+          />
       </div>
     );
   };
+
+  const BtnOrUser = () => {
+    if (!user) {
+      return <button className="p-2 bg-sky-500 text-white font-[rubik] w-[125px] rounded-lg duration-300 hover:bg-sky-600 hover:cursor-pointer"onClick={() => navigate('/login')}>Login</button>
+    } else {
+      return <img className="w-15 rounded-full hover:cursor-pointer" src={user.photo} alt={`${user.email} [Avatar]`} onClick={() => navigate('/login')} />
+    }
+  }
 
   return (
     <header className="p-3 flex justify-between items-center bg-slate-500">
