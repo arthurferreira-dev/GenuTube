@@ -9,6 +9,7 @@ import {
   Minimize,
 } from "lucide-react";
 import { TempFormatter } from "../utils/tempFormatter";
+import { CopyBtn } from "../components/copyBtn";
 
 export const VideoPlayer = () => {
   const [searchParams] = useSearchParams();
@@ -96,9 +97,9 @@ export const VideoPlayer = () => {
 
   const handlePageChannel = () => {
     const query = new URLSearchParams();
-    query.set('channelId', channelId ?? "");
-    navigate(`/channel?${query.toString()}`)
-  }
+    query.set("channelId", channelId ?? "");
+    navigate(`/channel?${query.toString()}`);
+  };
 
   return (
     <main className="w-full h-screen font-[rubik] flex flex-col items-center justify-start bg-slate-600 p-3 text-white">
@@ -149,19 +150,28 @@ export const VideoPlayer = () => {
               <p className="font-semibold">{TempFormatter(currentTime)}</p>
             </div>
           </div>
-          <div
-            className="absolute bottom-2 right-2 bg-black/50 p-2 rounded-full hover:bg-black/70 transition hover:cursor-pointer"
-            onClick={handleScreenEvent}
-          >
-            {screen ? 
-              <Expand size={20} className="text-white" />
-             : 
-              <Minimize size={20} className="text-white" />
-            }
+          <div className="absolute bottom-2 right-2 flex gap-2">
+            <div
+              className="bg-black/50 p-2 rounded-full hover:bg-black/70 transition hover:cursor-pointer"
+              onClick={handleScreenEvent}
+            >
+              {screen ? (
+                <Expand size={20} className="text-white" />
+              ) : (
+                <Minimize size={20} className="text-white" />
+              )}
+            </div>
+
+            <div className="bg-black/50 p-2 rounded-full hover:bg-black/70 transition hover:cursor-pointer">
+              <CopyBtn TextCopied={window.location.href} type="btn-icon" />
+            </div>
           </div>
         </div>
         <h2 className="text-center text-[18px]">{titleVideo}</h2>
-        <a className="text-lg text-center hover:underline hover:cursor-pointer" onClick={handlePageChannel}>
+        <a
+          className="text-lg text-center hover:underline hover:cursor-pointer"
+          onClick={handlePageChannel}
+        >
           {channelName}
         </a>
       </div>
