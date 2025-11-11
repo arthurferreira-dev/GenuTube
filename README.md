@@ -20,6 +20,9 @@ Here, the content speaks for itself — without the pressure of numbers.
 - &#x1F510; **Login and Registration with Firebase**  
   Safe autenticantion and simple registration with the famous Database (The Firebase).
 
+## &#x1F601; Support
+**[Gmail](mailto:genutube00@gmail.com?subject=Support)**
+
 ## &#x1F4DC; License
 
 **[GNU AFFERO GENERAL PUBLIC LICENSE (AGPL3)](LICENSE)**
