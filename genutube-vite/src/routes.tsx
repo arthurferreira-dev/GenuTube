@@ -4,6 +4,8 @@ import PageError from "./pages/error/PageError.tsx";
 import { VideoPlayer } from "./pages/Video.tsx";
 import { ChannelPage } from "./pages/ChannelPage.tsx";
 import { AccountPage } from "./pages/AccountPage.tsx";
+import { RatingPage } from "./pages/RatingPage.tsx";
+import { MediaNotePage } from "./pages/MediaNotePage.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: <AccountPage/>
+  },
+  {
+    path: "/avaliar",
+    element: <RatingPage/>
+  },
+  {
+    path: "/media",
+    element: <MediaNotePage/>
   },
   {
     path: "*",

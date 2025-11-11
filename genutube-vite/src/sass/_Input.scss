@@ -24,3 +24,44 @@
     }
   }
 }
+
+input.no-focus:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0;
+  border: none;
+}
+
+@mixin InputRange {
+  input[type="range"].input-\[range-blue\] {
+    border-radius: 10px;
+    transition: background 0.3s ease;
+
+    &::-webkit-slider-runnable-track {
+      height: 8px;
+      border-radius: 4px;
+    }
+
+    &::-moz-range-track { /* To Firefox */
+      height: 8px;
+      border-radius: 4px;
+    }
+
+    &:focus::-webkit-slider-thumb {
+      background-color: white;
+      border-color: rgba(0, 0, 0, 0.65);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    &::-moz-range-thumb { /* To Firefox */
+      background-color: white;
+      border-color: rgba(0, 0, 0, 0.65);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+  }
+}
+
+@mixin InputText {
+  input[type="text"].input-\[text-default\] {
+    width: 100%;
+    border-radius: 10px;
+  }
+}

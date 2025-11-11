@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.16",
+    "bootstrap": "^5.3.8",
     "firebase": "^12.4.0",
     "lucide-react": "^0.548.0",
     "react": "^19.1.1",
@@ -18,6 +19,7 @@
     "react-router-dom": "^7.9.4",
     "tailwindcss": "^4.1.16",
     "uuid": "^13.0.0",
+    "validator": "^13.15.23",
     "zustand": "^5.0.8"
   },
   "devDependencies": {

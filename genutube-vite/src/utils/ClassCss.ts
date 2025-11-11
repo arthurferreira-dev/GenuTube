@@ -1,0 +1,1 @@
+export const btnCL: string = 'p-2 text-white font-[rubik] rounded-lg duration-300 hover:cursor-pointer'

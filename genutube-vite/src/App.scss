@@ -1,6 +1,8 @@
 @charset "UTF-8";
-@use 'sass/Fonts' as fonts;
-@use 'sass/Input' as input;
+@use "sass/Fonts" as fonts;
+@use "sass/Input" as input;
 
 @include input.InputPrefence();
+@include input.InputRange();
+@include input.InputText();
 @include fonts.Fonts();
